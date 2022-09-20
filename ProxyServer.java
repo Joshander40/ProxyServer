@@ -56,7 +56,7 @@ public class ProxyServer {
 
 		}
 		catch(Exception e){
-			System.out.println("The program has encountered an exceptoin.");
+			System.out.println("The program has encountered an exception.");
 			return;
 		}
 		
@@ -82,10 +82,11 @@ public class ProxyServer {
 			*/
 			try{
 			FileWriter tempWriter = new FileWriter("log.txt");
-			tempWriter.write("Date");
+			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+			tempWriter.write("Date: " + timeStamp);
 			tempWriter.close();
 			}catch(Exception e){
-				System.out.println("The program has encountered an exceptoin.");
+				System.out.println("The program has encountered an exception.");
 				return;
 			}
 	}

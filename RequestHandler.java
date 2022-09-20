@@ -57,6 +57,28 @@ public class RequestHandler extends Thread {
 			 * (4) Otherwise, call method proxyServertoClient to process the GET request
 			 *
 		*/
+		try{
+			String requestLine = clientSocket.getInputStream().readLine();
+			if(request == null)
+			{
+				clientSocket.close();
+				return;
+			}
+			String[] splitLine = requestLine.split(" ");
+			String requestType = splitLine[0];
+			String urlString = splitLine[1];
+
+			if(!(requestType.equals("GET")))
+			{
+				return;
+			}
+			else if(CacheResponse == null)
+			{
+            }
+            catch(Exception e)
+            {
+                e.getStackTrace();
+            }
 
 	}
 
@@ -83,6 +105,24 @@ public class RequestHandler extends Thread {
 		 * (4) Write the web server's response to a cache file, put the request URL and cache file name to the cache Map
 		 * (5) close file, and sockets.
 		*/
+		//creates socket called cSocket using default as host and port 80
+		toWebServerSocket = new Socket("default", 80);
+
+		/* outToServer = new DataOutputStream(toWebServerSocket.getOutputStream());
+		inFromServer = new BufferedReader(inputStreamReader(toWebServerSocket.getInputStream())); */
+
+		outToServer.write(clientRequest);
+		outToServer.flush();
+		outToServer.close();
+		String line;
+		while((line = inFromServer.readLine()) != null)
+		{
+			fileWriter.write(line);
+			fileName.write(line);
+		}
+		fileName.close();
+		fileWriter.close();
+		toWebServerSocket.close();
 		
 	}
 	

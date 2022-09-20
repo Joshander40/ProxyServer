@@ -46,7 +46,18 @@ public class ProxyServer {
 			 * remember to catch Exceptions!
 			 *
 		*/
- 
+		try{
+			//create serverSocket called newSocket on port proxyPort
+		ServerSocket newSocket= new ServerSocket(proxyPort);
+		//creates thread called newThread using RequestHandler as th argument
+		Thread newThread = new Thread(RequestHandler);
+
+		newThread.start();
+		}
+		catch(Exception e){
+			System.out.println("The program has encountered an exceptoin.");
+			return;
+		}
 		
 	}
 
@@ -68,6 +79,8 @@ public class ProxyServer {
 			 * e.g. String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 			 *
 			*/
+			FileWriter tempWriter = new FileWriter("log.txt");
+      		myWriter.write("Date");
 	}
 
 }

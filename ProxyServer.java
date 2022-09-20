@@ -27,6 +27,7 @@ public class ProxyServer {
 
 	public static void main(String[] args) {
 		new ProxyServer().startServer(Integer.parseInt(args[0]));
+		System.out.println("Server Started");
 	}
 
 	void startServer(int proxyPort) {
@@ -48,10 +49,10 @@ public class ProxyServer {
 		*/
 		try{
 			//create serverSocket called newSocket on port proxyPort
-		ServerSocket newSocket= new ServerSocket(proxyPort);
+		proxySocket= new ServerSocket(proxyPort);
 		//creates thread called newThread using RequestHandler as th argument
 		Thread RequestHandler = new Thread();
-		newSocket.close();
+		proxySocket.close();
 		RequestHandler.start();
 
 		}

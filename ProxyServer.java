@@ -48,12 +48,16 @@ public class ProxyServer {
 			 *
 		*/
 		try{
-			//create serverSocket called newSocket on port proxyPort
+			//initializes proxySocket on port proxyPort
 		proxySocket= new ServerSocket(proxyPort);
-		//creates thread called newThread using RequestHandler as th argument
-		Thread RequestHandler = new Thread();
+		proxySocket.accept();
+		System.out.println("ProxySocket created and accepted");
+		//cerates a request handler using proxySocket as the socket. need a proxy servers
+		RequestHandler tHandler = new RequestHandler(proxySocket, );
+
+
 		proxySocket.close();
-		RequestHandler.start();
+		tHandler.start();
 
 		}
 		catch(Exception e){

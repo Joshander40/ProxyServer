@@ -52,9 +52,10 @@ public class ProxyServer {
 		proxySocket= new ServerSocket(proxyPort);
 		//creates thread called newThread using RequestHandler as th argument
 		Thread RequestHandler = new Thread();
-		proxySocket.close();
+		System.out.println("Server Started");
+		
 		RequestHandler.start();
-
+		proxySocket.close();
 		}
 		catch(Exception e){
 			System.out.println("The program has encountered an exception.");

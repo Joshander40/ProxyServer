@@ -45,9 +45,7 @@ public class RequestHandler extends Thread {
 
 	
 	@Override
-	
 	public void run() {
-
 		/**
 			 * To do
 			 * Process the requests from a client. In particular, 
@@ -58,9 +56,9 @@ public class RequestHandler extends Thread {
 			 *
 		*/
 		try{
-			String requestLine = clientSocket.getInputStream().readLine();
-			if(request == null)
-			{
+			String requestLine = inFromClient.toString();
+			System.out.print(requestLine);
+			if(request == null){
 				clientSocket.close();
 				return;
 			}
@@ -68,20 +66,14 @@ public class RequestHandler extends Thread {
 			String requestType = splitLine[0];
 			String urlString = splitLine[1];
 
-			if(!(requestType.equals("GET")))
-			{
+			if(!(requestType.equals("GET"))){
+				//proxyServertoClient();
 				return;
 			}
-			else if(CacheResponse == null)
-			{
-            }
-            catch(Exception e)
-            {
-                e.getStackTrace();
-            }
-
+		}catch(Exception e){
+			e.getStackTrace();
+		}
 	}
-
 	
 	private void proxyServertoClient(byte[] clientRequest) {
 
@@ -106,23 +98,23 @@ public class RequestHandler extends Thread {
 		 * (5) close file, and sockets.
 		*/
 		//creates socket called cSocket using default as host and port 80
-		toWebServerSocket = new Socket("default", 80);
+		//toWebServerSocket = new Socket("default", 80);
 
-		/* outToServer = new DataOutputStream(toWebServerSocket.getOutputStream());
-		inFromServer = new BufferedReader(inputStreamReader(toWebServerSocket.getInputStream())); */
+		//outToServer = new DataOutputStream(toWebServerSocket.getOutputStream());
+		//inFromServer = new BufferedReader(inputStreamReader(toWebServerSocket.getInputStream())); */
 
-		outToServer.write(clientRequest);
-		outToServer.flush();
-		outToServer.close();
+		//outToServer.write(clientRequest);
+		//outToServer.flush();
+		//outToServer.close();
 		String line;
-		while((line = inFromServer.readLine()) != null)
-		{
-			fileWriter.write(line);
-			fileName.write(line);
-		}
-		fileName.close();
-		fileWriter.close();
-		toWebServerSocket.close();
+		//while((line = inFromServer.readLine()) != null)
+		//{
+		//	fileWriter.write(line);
+		//	fileName.write(line);
+		//}
+		// fileName.close();
+		// fileWriter.close();
+		// toWebServerSocket.close();
 		
 	}
 	

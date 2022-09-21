@@ -58,7 +58,7 @@ public class RequestHandler extends Thread {
 			 *
 		*/
 		try{
-			String requestLine = );
+			String requestLine = getLine(clientSocket.getInputStream());
 			if(request == null)
 			{
 				clientSocket.close();
@@ -73,15 +73,17 @@ public class RequestHandler extends Thread {
 			{
 				return;
 			}
-			else if(CacheResponse == null)
+			else
 			{
-            }
+				proxyServertoClient(request);
+			}
+		}
             catch(Exception e)
             {
                 e.getStackTrace();
             }
+		}
 
-	}
 
 	
 	private void proxyServertoClient(byte[] clientRequest) {
@@ -170,6 +172,20 @@ public class RequestHandler extends Thread {
 			sb.append(ALPHABET.charAt(RANDOM.nextInt(ALPHABET.length())));
 		}
 		return sb.toString();
+	}
+
+	//https://android.googlesource.com/platform/frameworks/base/+/8a56d18/packages/services/Proxy/src/com/android/proxyhandler/ProxyServer.java
+	private String getLine(InputStream inputStream) throws IOException {
+		StringBuffer buffer = new StringBuffer();
+		int byteBuffer = inputStream.read();
+		if (byteBuffer < 0) return "";
+		do {
+			if (byteBuffer != '\r') {
+				buffer.append((char)byteBuffer);
+			}
+			byteBuffer = inputStream.read();
+		} while ((byteBuffer != '\n') && (byteBuffer >= 0));
+		return buffer.toString();
 	}
 
 }

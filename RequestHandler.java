@@ -106,24 +106,27 @@ public class RequestHandler extends Thread {
 		 * (4) Write the web server's response to a cache file, put the request URL and cache file name to the cache Map
 		 * (5) close file, and sockets.
 		*/
-		
+		try {
 		toWebServerSocket = new Socket("default", 80);
-		
-
 		 
-		inFromServer = new DataInputStream(toWebServerSocket.getInputStream());
-		outToServer = new DataOutputStream(toWebServerSocket.getOutputStream());
+			inFromServer =  new ByteArrayInputStream(serverReply);
+			outToServer = new ByteArrayOutputStream();
+
+			fileWriter = new FileOutputStream(fileName);
 
 		outToServer.write(clientRequest);
 		outToServer.flush();
 		outToServer.close();
-		String line;
-		while((line = inFromServer) != null)
-		{
-			fileWriter.write(serverReply);
-        }
+		
+			while(inFromServer.available() != 0)
+			{
+				fileWriter.write(serverReply);
+			}
 		fileWriter.close();
 		toWebServerSocket.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	

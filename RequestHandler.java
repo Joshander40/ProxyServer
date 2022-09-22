@@ -56,24 +56,37 @@ public class RequestHandler extends Thread {
 			 *
 		*/
 		try{
-			String requestLine = inFromClient.toString();
-			System.out.print(requestLine);
-			if(request == null){
+
+			String requestLine = getLine(clientSocket.getInputStream());
+			if(request == null)
+			{
+
 				clientSocket.close();
 				return;
 			}
 			String[] splitLine = requestLine.split(" ");
 			String requestType = splitLine[0];
 			String urlString = splitLine[1];
+			
 
 			if(!(requestType.equals("GET"))){
 				//proxyServertoClient();
 				return;
 			}
-		}catch(Exception e){
-			e.getStackTrace();
+
+			else
+			{
+				proxyServertoClient(request);
+			}
 		}
-	}
+            catch(Exception e)
+            {
+                e.getStackTrace();
+            }
+		}
+
+
+
 	
 	private void proxyServertoClient(byte[] clientRequest) {
 
@@ -97,24 +110,28 @@ public class RequestHandler extends Thread {
 		 * (4) Write the web server's response to a cache file, put the request URL and cache file name to the cache Map
 		 * (5) close file, and sockets.
 		*/
-		//creates socket called cSocket using default as host and port 80
-		//toWebServerSocket = new Socket("default", 80);
 
-		//outToServer = new DataOutputStream(toWebServerSocket.getOutputStream());
-		//inFromServer = new BufferedReader(inputStreamReader(toWebServerSocket.getInputStream())); */
+		try {
+		toWebServerSocket = new Socket("default", 80);
+		 
+			inFromServer =  new ByteArrayInputStream(serverReply);
+			outToServer = new ByteArrayOutputStream();
 
-		//outToServer.write(clientRequest);
-		//outToServer.flush();
-		//outToServer.close();
-		String line;
-		//while((line = inFromServer.readLine()) != null)
-		//{
-		//	fileWriter.write(line);
-		//	fileName.write(line);
-		//}
-		// fileName.close();
-		// fileWriter.close();
-		// toWebServerSocket.close();
+			fileWriter = new FileOutputStream(fileName);
+
+		outToServer.write(clientRequest);
+		outToServer.flush();
+		outToServer.close();
+		
+			while(inFromServer.available() != 0)
+			{
+				fileWriter.write(serverReply);
+			}
+		fileWriter.close();
+		toWebServerSocket.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -158,6 +175,20 @@ public class RequestHandler extends Thread {
 			sb.append(ALPHABET.charAt(RANDOM.nextInt(ALPHABET.length())));
 		}
 		return sb.toString();
+	}
+
+	//https://android.googlesource.com/platform/frameworks/base/+/8a56d18/packages/services/Proxy/src/com/android/proxyhandler/ProxyServer.java
+	private String getLine(InputStream inputStream) throws IOException {
+		StringBuffer buffer = new StringBuffer();
+		int byteBuffer = inputStream.read();
+		if (byteBuffer < 0) return "";
+		do {
+			if (byteBuffer != '\r') {
+				buffer.append((char)byteBuffer);
+			}
+			byteBuffer = inputStream.read();
+		} while ((byteBuffer != '\n') && (byteBuffer >= 0));
+		return buffer.toString();
 	}
 
 }

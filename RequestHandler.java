@@ -68,15 +68,22 @@ public class RequestHandler extends Thread {
 			String requestType = splitLine[0];
 			String urlString = splitLine[1];
 			
-
-			if(!(requestType.equals("GET"))){
-				//proxyServertoClient();
-				return;
+			//checks if requestType is a GET then checks to see if its in chache if it is it sents the file back to the user else it processes the request.
+			if(requestType.equals("GET")){
+				if(server.cache.containsKey(urlString))
+				{
+					sendCachedInfoToClient(server.getCache(urlString));
+				}
+				else
+				{
+				proxyServertoClient(request);
+				}
+				
 			}
 
 			else
 			{
-				proxyServertoClient(request);
+				clientSocket.close();
 			}
 		}
             catch(Exception e)

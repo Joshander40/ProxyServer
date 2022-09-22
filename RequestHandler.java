@@ -1,5 +1,3 @@
-
-
 import java.io.*;
 import java.net.*;
 import java.nio.file.Files;
@@ -76,6 +74,7 @@ public class RequestHandler extends Thread {
 				}
 				else
 				{
+					System.out.println(urlString);
 				proxyServertoClient(request);
 				}
 				
@@ -119,7 +118,7 @@ public class RequestHandler extends Thread {
 		*/
 
 		try {
-		toWebServerSocket = new Socket("default", 80);
+		toWebServerSocket = new Socket("localhost", 80);
 		 
 			inFromServer =  new ByteArrayInputStream(serverReply);
 			outToServer = new ByteArrayOutputStream();

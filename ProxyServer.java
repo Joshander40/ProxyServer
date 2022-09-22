@@ -53,8 +53,9 @@ public class ProxyServer {
 		proxySocket.accept();
 		System.out.println("ProxySocket created and accepted");
 		//cerates a request handler using proxySocket as the socket. need a proxy server
-		RequestHandler tHandler = new RequestHandler(proxySocket, null);
 
+		RequestHandler tHandler = new RequestHandler(proxySocket, );
+ 
 
 		proxySocket.close();
 		tHandler.start();

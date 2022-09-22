@@ -45,9 +45,7 @@ public class RequestHandler extends Thread {
 
 	
 	@Override
-	
 	public void run() {
-
 		/**
 			 * To do
 			 * Process the requests from a client. In particular, 
@@ -58,9 +56,11 @@ public class RequestHandler extends Thread {
 			 *
 		*/
 		try{
+
 			String requestLine = getLine(clientSocket.getInputStream());
 			if(request == null)
 			{
+
 				clientSocket.close();
 				return;
 			}
@@ -69,10 +69,11 @@ public class RequestHandler extends Thread {
 			String urlString = splitLine[1];
 			
 
-			if(!(requestType.equals("GET")))
-			{
+			if(!(requestType.equals("GET"))){
+				//proxyServertoClient();
 				return;
 			}
+
 			else
 			{
 				proxyServertoClient(request);
@@ -83,6 +84,7 @@ public class RequestHandler extends Thread {
                 e.getStackTrace();
             }
 		}
+
 
 
 	
@@ -108,6 +110,7 @@ public class RequestHandler extends Thread {
 		 * (4) Write the web server's response to a cache file, put the request URL and cache file name to the cache Map
 		 * (5) close file, and sockets.
 		*/
+
 		try {
 		toWebServerSocket = new Socket("default", 80);
 		 

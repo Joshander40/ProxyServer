@@ -50,6 +50,7 @@ public class ProxyServer {
 		try{
 			//initializes proxySocket on port proxyPort
 		proxySocket= new ServerSocket(proxyPort);
+
 		proxySocket.accept();
 		System.out.println("ProxySocket created and accepted");
 		//cerates a request handler using proxySocket as the socket. need a proxy servers

@@ -1,5 +1,3 @@
-
-
 import java.io.*;
 import java.net.*;
 import java.nio.file.Files;
@@ -58,12 +56,6 @@ public class RequestHandler extends Thread {
 		try{
 
 			String requestLine = getLine(inFromClient);
-			if(requestLine == null)
-			{
-
-				clientSocket.close();
-				return;
-			}
 			String[] splitLine = requestLine.split(" ");
 			String requestType = splitLine[0];
 			String urlString = splitLine[1];
@@ -76,6 +68,10 @@ public class RequestHandler extends Thread {
 				}
 				else
 				{
+					System.out.println(requestLine);
+					System.out.println(requestType);
+					System.out.println(urlString);
+					System.out.println(clientSocket.isConnected());
 				proxyServertoClient(request);
 				}
 				
@@ -119,7 +115,7 @@ public class RequestHandler extends Thread {
 		*/
 
 		try {
-		toWebServerSocket = new Socket("default", 80);
+		toWebServerSocket = new Socket("localhost", 80);
 		 
 			inFromServer =  new ByteArrayInputStream(serverReply);
 			outToServer = new ByteArrayOutputStream();

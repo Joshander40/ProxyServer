@@ -26,7 +26,11 @@ public class ProxyServer {
 	String logFileName = "log.txt";
 
 	public static void main(String[] args) {
-		new ProxyServer().startServer(Integer.parseInt(args[0]));
+		//makes the portnumber 1234 every time.
+		//need to change back when done!!!
+		int portnumber = 1234;
+		new ProxyServer().startServer(portnumber);
+		//new ProxyServer().startServer(Integer.parseInt(args[0]));
 		System.out.println("Server Started");
 	}
 
@@ -55,9 +59,8 @@ public class ProxyServer {
 		System.out.println("ProxySocket created and accepted");
 		//cerates a request handler using proxySocket as the socket. need a proxy server
 			
-			
-			Thread thread = new RequestHandler(clientsocket,this);
- 
+		Thread rh = new RequestHandler(clientsocket, this);
+		rh.start();
 
 		proxySocket.close();
 

@@ -57,8 +57,8 @@ public class RequestHandler extends Thread {
 		*/
 		try{
 
-			String requestLine = getLine(clientSocket.getInputStream());
-			if(request == null)
+			String requestLine = getLine(inFromClient);
+			if(requestLine == null)
 			{
 
 				clientSocket.close();

@@ -38,6 +38,7 @@ public class RequestHandler extends Thread {
 	@Override
 	public void run() {
 		/**
+
 		 * To do
 		 * Process the requests from a client. In particular,
 		 * (1) Check the request type, only process GET request and ignore others
@@ -48,10 +49,13 @@ public class RequestHandler extends Thread {
 		 */
 		try {
 
+
+
 			String requestLine = getLine(inFromClient);
 			String[] splitLine = requestLine.split(" ");
 			String requestType = splitLine[0];
 			String urlString = splitLine[1];
+
 			System.out.println("This is the request type: " + requestType);
 			// checks if requestType is a GET then checks to see if its in chache if it is
 			// it sents the file back to the user else it processes the request.
@@ -66,10 +70,12 @@ public class RequestHandler extends Thread {
 					System.out.println("14");
 				} else {
 
+
 					System.out.println(requestLine);
 					System.out.println(requestType);
 					System.out.println(urlString);
 					System.out.println(clientSocket.isConnected());
+
 					System.out.println(request[0]);
 					proxyServertoClient(request);
 
@@ -84,6 +90,7 @@ public class RequestHandler extends Thread {
 			e.getStackTrace();
 		}
 	}
+
 
 	private void proxyServertoClient(byte[] clientRequest) {
 
@@ -107,6 +114,7 @@ public class RequestHandler extends Thread {
 		 * (4) Write the web server's response to a cache file, put the request URL and cache file name to the cache Map
 		 * (5) close file, and sockets.
 		*/
+
 		System.out.println("15");
 
 		try {
@@ -137,6 +145,8 @@ public class RequestHandler extends Thread {
 				
 				//System.out.println("23");
 			//}
+
+
 		fileWriter.close();
 		toWebServerSocket.close();
 		} catch (IOException e) {
@@ -184,6 +194,7 @@ public class RequestHandler extends Thread {
 		return sb.toString();
 	}
 
+
 	// https://android.googlesource.com/platform/frameworks/base/+/8a56d18/packages/services/Proxy/src/com/android/proxyhandler/ProxyServer.java
 	private String getLine(InputStream inputStream) throws IOException {
 		StringBuffer buffer = new StringBuffer();
@@ -193,6 +204,7 @@ public class RequestHandler extends Thread {
 		do {
 			if (byteBuffer != '\r') {
 				buffer.append((char) byteBuffer);
+
 			}
 			byteBuffer = inputStream.read();
 		} while ((byteBuffer != '\n') && (byteBuffer >= 0));

@@ -5,33 +5,27 @@ import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 
-
 // RequestHandler is thread that process requests of one client connection
 public class RequestHandler extends Thread {
 
-	
 	Socket clientSocket;
 
 	InputStream inFromClient;
 
 	OutputStream outToClient;
-	
+
 	byte[] request = new byte[1024];
 
-	
 	private ProxyServer server;
-
 
 	public RequestHandler(Socket clientSocket, ProxyServer proxyServer) {
 
-		
 		this.clientSocket = clientSocket;
-		
 
 		this.server = proxyServer;
 
 		try {
-			clientSocket.setSoTimeout(2000);
+			clientSocket.setSoTimeout(20000);
 			inFromClient = clientSocket.getInputStream();
 			outToClient = clientSocket.getOutputStream();
 
@@ -41,56 +35,63 @@ public class RequestHandler extends Thread {
 
 	}
 
-	
 	@Override
 	public void run() {
 		/**
-			 * To do
-			 * Process the requests from a client. In particular, 
-			 * (1) Check the request type, only process GET request and ignore others
-                         * (2) Write log.
-			 * (3) If the url of GET request has been cached, respond with cached content
-			 * (4) Otherwise, call method proxyServertoClient to process the GET request
-			 *
-		*/
-		try{
+
+		 * To do
+		 * Process the requests from a client. In particular,
+		 * (1) Check the request type, only process GET request and ignore others
+		 * (2) Write log.
+		 * (3) If the url of GET request has been cached, respond with cached content
+		 * (4) Otherwise, call method proxyServertoClient to process the GET request
+		 *
+		 */
+		try {
+
+
 
 			String requestLine = getLine(inFromClient);
 			String[] splitLine = requestLine.split(" ");
 			String requestType = splitLine[0];
 			String urlString = splitLine[1];
-			
-			//checks if requestType is a GET then checks to see if its in chache if it is it sents the file back to the user else it processes the request.
-			if(requestType.equals("GET")){
-				if(server.cache.containsKey(urlString))
-				{
+
+			System.out.println("This is the request type: " + requestType);
+			// checks if requestType is a GET then checks to see if its in chache if it is
+			// it sents the file back to the user else it processes the request.
+			System.out.println("10");
+			if (requestType.equals("GET")) {
+				System.out.println("11");
+				if (server.cache.containsKey(urlString)) {
+					System.out.println("12");
 					sendCachedInfoToClient(server.getCache(urlString));
-				}
-				else
-				{
+					System.out.println("13");
+					proxyServertoClient(request);
+					System.out.println("14");
+				} else {
+
+
 					System.out.println(requestLine);
 					System.out.println(requestType);
 					System.out.println(urlString);
 					System.out.println(clientSocket.isConnected());
-				proxyServertoClient(request);
+
+					System.out.println(request[0]);
+					proxyServertoClient(request);
+
 				}
-				
+
 			}
 
-			else
-			{
+			else {
 				clientSocket.close();
 			}
+		} catch (Exception e) {
+			e.getStackTrace();
 		}
-            catch(Exception e)
-            {
-                e.getStackTrace();
-            }
-		}
+	}
 
 
-
-	
 	private void proxyServertoClient(byte[] clientRequest) {
 
 		FileOutputStream fileWriter = null;
@@ -114,22 +115,38 @@ public class RequestHandler extends Thread {
 		 * (5) close file, and sockets.
 		*/
 
+		System.out.println("15");
+
 		try {
-		toWebServerSocket = new Socket("localhost", 80);
-		 
+			toWebServerSocket = new Socket("localhost", 1234);
+			System.out.println("16");
+
 			inFromServer =  new ByteArrayInputStream(serverReply);
 			outToServer = new ByteArrayOutputStream();
+			System.out.println("17");
 
 			fileWriter = new FileOutputStream(fileName);
+			System.out.println("18");
+			System.out.println("is toWebServer Connected");
+			System.out.println(toWebServerSocket.isConnected());
 
-		outToServer.write(clientRequest);
-		outToServer.flush();
-		outToServer.close();
-		
-			while(inFromServer.available() != 0)
-			{
+			outToServer.write(clientRequest);
+			System.out.println("19");
+
+			outToServer.flush();
+			System.out.println("20");
+
+			outToServer.close();
+			System.out.println("21");
+
+			//while(inFromServer.available() != 0){
+				//System.out.println("22");
 				fileWriter.write(serverReply);
-			}
+				
+				//System.out.println("23");
+			//}
+
+
 		fileWriter.close();
 		toWebServerSocket.close();
 		} catch (IOException e) {
@@ -137,9 +154,7 @@ public class RequestHandler extends Thread {
 		}
 		
 	}
-	
-	
-	
+
 	// Sends the cached content stored in the cache file to the client
 	private void sendCachedInfoToClient(String fileName) {
 
@@ -165,9 +180,8 @@ public class RequestHandler extends Thread {
 
 		}
 	}
-	
-	
-	// Generates a random file name  
+
+	// Generates a random file name
 	public String generateRandomFileName() {
 
 		String ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_";
@@ -180,14 +194,17 @@ public class RequestHandler extends Thread {
 		return sb.toString();
 	}
 
-	//https://android.googlesource.com/platform/frameworks/base/+/8a56d18/packages/services/Proxy/src/com/android/proxyhandler/ProxyServer.java
+
+	// https://android.googlesource.com/platform/frameworks/base/+/8a56d18/packages/services/Proxy/src/com/android/proxyhandler/ProxyServer.java
 	private String getLine(InputStream inputStream) throws IOException {
 		StringBuffer buffer = new StringBuffer();
 		int byteBuffer = inputStream.read();
-		if (byteBuffer < 0) return "";
+		if (byteBuffer < 0)
+			return "";
 		do {
 			if (byteBuffer != '\r') {
-				buffer.append((char)byteBuffer);
+				buffer.append((char) byteBuffer);
+
 			}
 			byteBuffer = inputStream.read();
 		} while ((byteBuffer != '\n') && (byteBuffer >= 0));

@@ -3,8 +3,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.ProxySelector;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.http.HttpClient;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -28,8 +31,13 @@ public class ProxyServer {
 	public static void main(String[] args) {
 		//makes the portnumber 1234 every time.
 		//need to change back when done!!!
+
+		System.out.println("Server Started");
 		int portnumber = 1234;
-		new ProxyServer().startServer(portnumber);
+		HttpClient http_Client = HttpClient.newBuilder().proxy(ProxySelector.of(new InetSocketAddress("localhost", 80))).build();
+		
+		//new ProxyServer().startServer(portnumber);
+
 		//new ProxyServer().startServer(Integer.parseInt(args[0]));
 		System.out.println("Server Started");
 	}
@@ -52,17 +60,30 @@ public class ProxyServer {
 			 *
 		*/
 		try{
-			//initializes proxySocket on port proxyPort
+
+		while(true){
+		System.out.println("1");
+		//initializes proxySocket on port proxyPort
 		proxySocket= new ServerSocket(proxyPort);
-		
+		System.out.println("2");
 		Socket clientsocket = proxySocket.accept();
+		System.out.println("3");
 		System.out.println("ProxySocket created and accepted");
 		//cerates a request handler using proxySocket as the socket. need a proxy server
 			
-		Thread rh = new RequestHandler(clientsocket, this);
+		RequestHandler rh = new RequestHandler(clientsocket, this);
+		System.out.println("4");
 		rh.start();
+		
+		System.out.println("5");
+		String address = proxySocket.getInetAddress().getHostAddress();
+		System.out.println(address);
 
+		
+		System.out.println("6");
 		proxySocket.close();
+		System.out.println("7");
+		}
 
 		}
 		catch(Exception e){

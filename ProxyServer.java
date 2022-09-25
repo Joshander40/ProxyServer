@@ -31,10 +31,16 @@ public class ProxyServer {
 	public static void main(String[] args) {
 		//makes the portnumber 1234 every time.
 		//need to change back when done!!!
+
 		System.out.println("Server Started");
 		int portnumber = 1234;		
 		new ProxyServer().startServer(portnumber);
 		
+<<<<<<< HEAD
+=======
+		//new ProxyServer().startServer(portnumber);
+
+>>>>>>> d97802aec9bd2e74f270150b69fccfc3648a6ab5
 		//new ProxyServer().startServer(Integer.parseInt(args[0]));
 		System.out.println("Server Started");
 	}
@@ -57,6 +63,7 @@ public class ProxyServer {
 			 *
 		*/
 		try{
+
 		while(true){
 		System.out.println("1");
 		//initializes proxySocket on port proxyPort
@@ -80,6 +87,7 @@ public class ProxyServer {
 		proxySocket.close();
 		System.out.println("7");
 		}
+
 		}
 		catch(Exception e){
 			System.out.println("The program has encountered an exception.");

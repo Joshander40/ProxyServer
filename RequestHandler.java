@@ -49,11 +49,7 @@ public class RequestHandler extends Thread {
 		 */
 		try {
 
-<<<<<<< HEAD
 			
-=======
-
->>>>>>> d97802aec9bd2e74f270150b69fccfc3648a6ab5
 
 			String requestLine = getLine(inFromClient);
 			String[] splitLine = requestLine.split(" ");
@@ -73,12 +69,7 @@ public class RequestHandler extends Thread {
 					proxyServertoClient(request);
 					System.out.println("14");
 				} else {
-<<<<<<< HEAD
 					inFromClient.read(request);
-=======
-
-
->>>>>>> d97802aec9bd2e74f270150b69fccfc3648a6ab5
 					System.out.println(requestLine);
 					System.out.println(requestType);
 					System.out.println(urlString);
@@ -130,8 +121,19 @@ public class RequestHandler extends Thread {
 			System.out.println("16");
 
 			inFromServer = toWebServerSocket.getInputStream();
-
 			outToServer = toWebServerSocket.getOutputStream();
+
+			System.out.println("17b");
+			int bytesRead = inFromClient.read(clientRequest);
+			System.out.println(bytesRead);
+
+			while((bytesRead = inFromClient.read(clientRequest)) != -1){
+				System.out.println(bytesRead);
+				outToServer.write(clientRequest, 0, bytesRead);
+				outToServer.flush();
+			}
+			System.out.println("17c");
+
 			outToServer.write(clientRequest);
 			System.out.println("17");
 

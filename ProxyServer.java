@@ -7,7 +7,6 @@ import java.net.InetSocketAddress;
 import java.net.ProxySelector;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.http.HttpClient;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -36,15 +35,6 @@ public class ProxyServer {
 		int portnumber = 1234;		
 		new ProxyServer().startServer(portnumber);
 		
-<<<<<<< HEAD
-		new ProxyServer().startServer(portnumber);
-=======
-<<<<<<< HEAD
-=======
-		//new ProxyServer().startServer(portnumber);
->>>>>>> 43bb4fa590ec060585e0e93b10425f0d15ddd2b3
-
->>>>>>> d97802aec9bd2e74f270150b69fccfc3648a6ab5
 		//new ProxyServer().startServer(Integer.parseInt(args[0]));
 		System.out.println("Server Started");
 	}

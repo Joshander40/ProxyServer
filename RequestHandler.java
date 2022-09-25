@@ -52,6 +52,7 @@ public class RequestHandler extends Thread {
 			
 
 			String requestLine = getLine(inFromClient);
+			System.out.println("This is the requestLine: " + requestLine);
 			String[] splitLine = requestLine.split(" ");
 			String requestType = splitLine[0];
 			String urlString = splitLine[1];
@@ -74,7 +75,7 @@ public class RequestHandler extends Thread {
 					System.out.println(requestType);
 					System.out.println(urlString);
 					System.out.println(clientSocket.isConnected());
-
+					
 					System.out.println(request[0]);
 					proxyServertoClient(request);
 
@@ -117,16 +118,24 @@ public class RequestHandler extends Thread {
 		System.out.println("15");
 
 		try {
-			toWebServerSocket = new Socket("localhost", 1234);
+			//toWebServerSocket = new Socket("localhost", 1234);
+			System.out.println("port is " + clientSocket.getPort());
+			toWebServerSocket = new Socket(clientSocket.getInetAddress(), 1234);
+			
 			System.out.println("16");
+			System.out.println(toWebServerSocket.toString());
+			//inFromServer = toWebServerSocket.getInputStream();
+			inFromServer = clientSocket.getInputStream();
+			String sentence = inFromServer.readAllBytes();
 
-			inFromServer = toWebServerSocket.getInputStream();
+
+
 			outToServer = toWebServerSocket.getOutputStream();
-
+			System.out.println(toWebServerSocket.getInetAddress());
 			System.out.println("17b");
-			int bytesRead = inFromClient.read(clientRequest);
+			int bytesRead = inFromClient.read(serverReply);
 			System.out.println(bytesRead);
-
+			System.out.println("17c");
 			while((bytesRead = inFromClient.read(clientRequest)) != -1){
 				System.out.println(bytesRead);
 				outToServer.write(clientRequest, 0, bytesRead);

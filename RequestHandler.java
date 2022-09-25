@@ -49,7 +49,11 @@ public class RequestHandler extends Thread {
 		 */
 		try {
 
+<<<<<<< HEAD
+			
+=======
 
+>>>>>>> d97802aec9bd2e74f270150b69fccfc3648a6ab5
 
 			String requestLine = getLine(inFromClient);
 			String[] splitLine = requestLine.split(" ");
@@ -69,8 +73,12 @@ public class RequestHandler extends Thread {
 					proxyServertoClient(request);
 					System.out.println("14");
 				} else {
+<<<<<<< HEAD
+					inFromClient.read(request);
+=======
 
 
+>>>>>>> d97802aec9bd2e74f270150b69fccfc3648a6ab5
 					System.out.println(requestLine);
 					System.out.println(requestType);
 					System.out.println(urlString);
@@ -121,8 +129,10 @@ public class RequestHandler extends Thread {
 			toWebServerSocket = new Socket("localhost", 1234);
 			System.out.println("16");
 
-			inFromServer =  new ByteArrayInputStream(serverReply);
-			outToServer = new ByteArrayOutputStream();
+			inFromServer = toWebServerSocket.getInputStream();
+
+			outToServer = toWebServerSocket.getOutputStream();
+			outToServer.write(clientRequest);
 			System.out.println("17");
 
 			fileWriter = new FileOutputStream(fileName);

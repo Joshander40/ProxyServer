@@ -33,11 +33,18 @@ public class ProxyServer {
 		//need to change back when done!!!
 
 		System.out.println("Server Started");
-		int portnumber = 1234;
-		HttpClient http_Client = HttpClient.newBuilder().proxy(ProxySelector.of(new InetSocketAddress("localhost", 80))).build();
-		
+		int portnumber = 1234;		
 		new ProxyServer().startServer(portnumber);
+		
+<<<<<<< HEAD
+		new ProxyServer().startServer(portnumber);
+=======
+<<<<<<< HEAD
+=======
+		//new ProxyServer().startServer(portnumber);
+>>>>>>> 43bb4fa590ec060585e0e93b10425f0d15ddd2b3
 
+>>>>>>> d97802aec9bd2e74f270150b69fccfc3648a6ab5
 		//new ProxyServer().startServer(Integer.parseInt(args[0]));
 		System.out.println("Server Started");
 	}
@@ -64,7 +71,7 @@ public class ProxyServer {
 		//while(true){
 		System.out.println("1");
 		//initializes proxySocket on port proxyPort
-		proxySocket= new ServerSocket(proxyPort);
+		proxySocket = new ServerSocket(proxyPort);
 		System.out.println("2");
 		Socket clientsocket = proxySocket.accept();
 		System.out.println("3");
@@ -76,8 +83,8 @@ public class ProxyServer {
 		rh.start();
 		
 		System.out.println("5");
-		String address = proxySocket.getInetAddress().getHostAddress();
-		System.out.println(address);
+		String address = clientsocket.getInetAddress().getHostAddress();
+		System.out.println("Server Adress: " + address);
 
 		
 		System.out.println("6");

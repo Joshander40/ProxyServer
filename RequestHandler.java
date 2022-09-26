@@ -56,23 +56,23 @@ public class RequestHandler extends Thread {
 			String[] splitLine = requestLine.split(" ");
 			String requestType = splitLine[0];
 			String urlString = splitLine[1];
+			
 
-			System.out.println("This is the request type: " + requestType);
 			// checks if requestType is a GET then checks to see if its in chache if it is
 			// it sents the file back to the user else it processes the request.
 			
 			if (requestType.equals("GET")) {
 
+
 				if (server.getCache(urlString) == null) {	
-					System.out.println(requestLine);
 					proxyServertoClient(request);
 					
 				} else {
-					System.out.println(urlString.hashCode());
 					sendCachedInfoToClient(server.getCache(urlString));
 					
 
 				}
+				//server.writeLog(" Ip address: " +  +" url: " +urlString);
 
 			}
 

@@ -30,7 +30,7 @@ public class ProxyServer {
 	public static void main(String[] args) {
 		//makes the portnumber 1234 every time.
 		//need to change back when done!!!
-		int portnumber = 42069;		
+		int portnumber = 1234;		
 		new ProxyServer().startServer(portnumber);
 		
 

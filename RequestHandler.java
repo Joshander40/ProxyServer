@@ -72,7 +72,7 @@ public class RequestHandler extends Thread {
 					
 
 				}
-				//server.writeLog(" Ip address: " +  +" url: " +urlString);
+				server.writeLog(" Ip address: " +  " url: " +urlString);
 
 			}
 

@@ -30,7 +30,7 @@ public class ProxyServer {
 	public static void main(String[] args) {
 		//makes the portnumber 1234 every time.
 		//need to change back when done!!!
-		int portnumber = 1234;		
+		int portnumber = 42069;		
 		new ProxyServer().startServer(portnumber);
 		
 
@@ -97,13 +97,12 @@ public class ProxyServer {
 			 *
 			*/
 			try{
-			FileWriter tempWriter = new FileWriter("log.txt");
+			FileWriter tempWriter = new FileWriter(logFileName,true);
 			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-			tempWriter.write("Date: " + timeStamp);
+			tempWriter.append("Date: " + timeStamp + info + "\n");
 			tempWriter.close();
 			}catch(Exception e){
-				System.out.println("The program has encountered an exception.");
-				return;
+				e.printStackTrace();
 			}
 	}
 

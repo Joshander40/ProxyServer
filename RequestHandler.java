@@ -60,25 +60,17 @@ public class RequestHandler extends Thread {
 			System.out.println("This is the request type: " + requestType);
 			// checks if requestType is a GET then checks to see if its in chache if it is
 			// it sents the file back to the user else it processes the request.
-			System.out.println("10");
+			
 			if (requestType.equals("GET")) {
-				System.out.println("11");
-				if (server.cache.containsKey(urlString)) {
-					System.out.println("12");
-					sendCachedInfoToClient(server.getCache(urlString));
-					System.out.println("13");
-					//proxyServertoClient(request);
-					System.out.println("14");
-				} else {
-
-
+				System.out.println(urlString.hashCode()+"");
+				if (server.getCache(urlString.hashCode()+"") == null) {	
 					System.out.println(requestLine);
-					System.out.println(requestType);
-					System.out.println(urlString);
-					System.out.println(clientSocket.isConnected());
-
-					System.out.println(request[0]);
 					proxyServertoClient(request);
+					
+				} else {
+					System.out.println(urlString.hashCode());
+					sendCachedInfoToClient(server.getCache(urlString.hashCode()+""));
+					
 
 				}
 
@@ -116,7 +108,6 @@ public class RequestHandler extends Thread {
 		 * (5) close file, and sockets.
 		*/
 
-		System.out.println("15");
 
 		try {
 
@@ -127,38 +118,34 @@ public class RequestHandler extends Thread {
 			URL url = new URL(urlString);
 
 			toWebServerSocket = new Socket(url.getHost(), url.getDefaultPort());
-			//get webserver name.
-			System.out.println("16");
+
 
 			inFromServer = toWebServerSocket.getInputStream();
 			outToServer = toWebServerSocket.getOutputStream();
 
 			outToServer.write(clientRequest);
-			System.out.println("17");
+			
 
 			fileWriter = new FileOutputStream(fileName);
-			System.out.println("18");
-			System.out.println("is toWebServer Connected");
-			System.out.println(toWebServerSocket.isConnected());
+
 
 			outToServer.write(clientRequest);
-			System.out.println("19");
+			
 
 			outToServer.flush();
-			System.out.println("20");
+			
 
 
 			while(inFromServer.read(serverReply) != -1){
-				//System.out.println("22");
+				
 				outToClient.write(serverReply);
 				fileWriter.write(serverReply);
 				
-				//System.out.println("23");
 			}
 
-
-		fileWriter.close();
-		toWebServerSocket.close();
+			server.putCache(urlString.hashCode()+"", fileName);
+			fileWriter.close();
+			toWebServerSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

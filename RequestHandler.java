@@ -49,9 +49,10 @@ public class RequestHandler extends Thread {
 		 */
 		try {
 
-			
+			inFromClient.read(request);
 
-			String requestLine = getLine(inFromClient);
+			
+			String requestLine = new String(request);
 			String[] splitLine = requestLine.split(" ");
 			String requestType = splitLine[0];
 			String urlString = splitLine[1];
@@ -59,24 +60,17 @@ public class RequestHandler extends Thread {
 			System.out.println("This is the request type: " + requestType);
 			// checks if requestType is a GET then checks to see if its in chache if it is
 			// it sents the file back to the user else it processes the request.
-			System.out.println("10");
+			
 			if (requestType.equals("GET")) {
-				System.out.println("11");
-				if (server.cache.containsKey(urlString)) {
-					System.out.println("12");
-					sendCachedInfoToClient(server.getCache(urlString));
-					System.out.println("13");
-					proxyServertoClient(request);
-					System.out.println("14");
-				} else {
-					inFromClient.read(request);
+				System.out.println(urlString.hashCode()+"");
+				if (server.getCache(urlString.hashCode()+"") == null) {	
 					System.out.println(requestLine);
-					System.out.println(requestType);
-					System.out.println(urlString);
-					System.out.println(clientSocket.isConnected());
-
-					System.out.println(request[0]);
 					proxyServertoClient(request);
+					
+				} else {
+					System.out.println(urlString.hashCode());
+					sendCachedInfoToClient(server.getCache(urlString.hashCode()+""));
+					
 
 				}
 
@@ -114,53 +108,44 @@ public class RequestHandler extends Thread {
 		 * (5) close file, and sockets.
 		*/
 
-		System.out.println("15");
 
 		try {
-			toWebServerSocket = new Socket("localhost", 1234);
-			System.out.println("16");
+
+			String requestLine = new String(request);
+			String[] splitLine = requestLine.split(" ");
+			String urlString = splitLine[1];
+
+			URL url = new URL(urlString);
+
+			toWebServerSocket = new Socket(url.getHost(), url.getDefaultPort());
+
 
 			inFromServer = toWebServerSocket.getInputStream();
 			outToServer = toWebServerSocket.getOutputStream();
 
-			System.out.println("17b");
-			int bytesRead = inFromClient.read(clientRequest);
-			System.out.println(bytesRead);
-
-			while((bytesRead = inFromClient.read(clientRequest)) != -1){
-				System.out.println(bytesRead);
-				outToServer.write(clientRequest, 0, bytesRead);
-				outToServer.flush();
-			}
-			System.out.println("17c");
-
 			outToServer.write(clientRequest);
-			System.out.println("17");
+			
 
 			fileWriter = new FileOutputStream(fileName);
-			System.out.println("18");
-			System.out.println("is toWebServer Connected");
-			System.out.println(toWebServerSocket.isConnected());
+
 
 			outToServer.write(clientRequest);
-			System.out.println("19");
+			
 
 			outToServer.flush();
-			System.out.println("20");
+			
 
-			outToServer.close();
-			System.out.println("21");
 
-			//while(inFromServer.available() != 0){
-				//System.out.println("22");
+			while(inFromServer.read(serverReply) != -1){
+				
+				outToClient.write(serverReply);
 				fileWriter.write(serverReply);
 				
-				//System.out.println("23");
-			//}
+			}
 
-
-		fileWriter.close();
-		toWebServerSocket.close();
+			server.putCache(urlString.hashCode()+"", fileName);
+			fileWriter.close();
+			toWebServerSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -207,20 +192,6 @@ public class RequestHandler extends Thread {
 	}
 
 
-	// https://android.googlesource.com/platform/frameworks/base/+/8a56d18/packages/services/Proxy/src/com/android/proxyhandler/ProxyServer.java
-	private String getLine(InputStream inputStream) throws IOException {
-		StringBuffer buffer = new StringBuffer();
-		int byteBuffer = inputStream.read();
-		if (byteBuffer < 0)
-			return "";
-		do {
-			if (byteBuffer != '\r') {
-				buffer.append((char) byteBuffer);
-
-			}
-			byteBuffer = inputStream.read();
-		} while ((byteBuffer != '\n') && (byteBuffer >= 0));
-		return buffer.toString();
-	}
+	
 
 }

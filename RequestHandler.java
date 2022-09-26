@@ -49,8 +49,10 @@ public class RequestHandler extends Thread {
 		 */
 		try {
 
+			inFromClient.read(request);
 
-			String requestLine = getLine(inFromClient);
+			
+			String requestLine = new String(request);
 			String[] splitLine = requestLine.split(" ");
 			String requestType = splitLine[0];
 			String urlString = splitLine[1];
@@ -65,7 +67,7 @@ public class RequestHandler extends Thread {
 					System.out.println("12");
 					sendCachedInfoToClient(server.getCache(urlString));
 					System.out.println("13");
-					proxyServertoClient(request);
+					//proxyServertoClient(request);
 					System.out.println("14");
 				} else {
 
@@ -117,12 +119,21 @@ public class RequestHandler extends Thread {
 		System.out.println("15");
 
 		try {
-			toWebServerSocket = new Socket("localhost", 1234);
+
+			String requestLine = new String(request);
+			String[] splitLine = requestLine.split(" ");
+			String urlString = splitLine[1];
+
+			URL url = new URL(urlString);
+
+			toWebServerSocket = new Socket(url.getHost(), url.getDefaultPort());
+			//get webserver name.
 			System.out.println("16");
 
 			inFromServer = toWebServerSocket.getInputStream();
 
 			outToServer = toWebServerSocket.getOutputStream();
+
 			outToServer.write(clientRequest);
 			System.out.println("17");
 
@@ -137,15 +148,14 @@ public class RequestHandler extends Thread {
 			outToServer.flush();
 			System.out.println("20");
 
-			outToServer.close();
-			System.out.println("21");
 
-			//while(inFromServer.available() != 0){
+			while(inFromServer.read(serverReply) != -1){
 				//System.out.println("22");
+				outToClient.write(serverReply);
 				fileWriter.write(serverReply);
 				
 				//System.out.println("23");
-			//}
+			}
 
 
 		fileWriter.close();
@@ -196,20 +206,6 @@ public class RequestHandler extends Thread {
 	}
 
 
-	// https://android.googlesource.com/platform/frameworks/base/+/8a56d18/packages/services/Proxy/src/com/android/proxyhandler/ProxyServer.java
-	private String getLine(InputStream inputStream) throws IOException {
-		StringBuffer buffer = new StringBuffer();
-		int byteBuffer = inputStream.read();
-		if (byteBuffer < 0)
-			return "";
-		do {
-			if (byteBuffer != '\r') {
-				buffer.append((char) byteBuffer);
-
-			}
-			byteBuffer = inputStream.read();
-		} while ((byteBuffer != '\n') && (byteBuffer >= 0));
-		return buffer.toString();
-	}
+	
 
 }

@@ -33,8 +33,8 @@ public class ProxyServer {
 
 		System.out.println("Server Started");
 		int portnumber = 1234;		
-		new ProxyServer().startServer(portnumber);
-		
+		new ProxyServer().startServer(portnumber);;
+
 		//new ProxyServer().startServer(Integer.parseInt(args[0]));
 		System.out.println("Server Started");
 	}
@@ -58,7 +58,7 @@ public class ProxyServer {
 		*/
 		try{
 
-		//while(true){
+		while(true){
 		System.out.println("1");
 		//initializes proxySocket on port proxyPort
 		proxySocket = new ServerSocket(proxyPort);
@@ -80,7 +80,7 @@ public class ProxyServer {
 		System.out.println("6");
 		proxySocket.close();
 		System.out.println("7");
-		//}
+		}
 
 		}
 		catch(Exception e){

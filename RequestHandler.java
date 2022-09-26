@@ -62,14 +62,14 @@ public class RequestHandler extends Thread {
 			// it sents the file back to the user else it processes the request.
 			
 			if (requestType.equals("GET")) {
-				System.out.println(urlString.hashCode()+"");
-				if (server.getCache(urlString.hashCode()+"") == null) {	
+
+				if (server.getCache(urlString) == null) {	
 					System.out.println(requestLine);
 					proxyServertoClient(request);
 					
 				} else {
 					System.out.println(urlString.hashCode());
-					sendCachedInfoToClient(server.getCache(urlString.hashCode()+""));
+					sendCachedInfoToClient(server.getCache(urlString));
 					
 
 				}
@@ -143,7 +143,7 @@ public class RequestHandler extends Thread {
 				
 			}
 
-			server.putCache(urlString.hashCode()+"", fileName);
+			server.putCache(urlString, fileName);
 			fileWriter.close();
 			toWebServerSocket.close();
 		} catch (IOException e) {

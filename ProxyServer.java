@@ -57,7 +57,7 @@ public class ProxyServer {
 		*/
 		try{
 
-		//while(true){
+		while(true){
 		//initializes proxySocket on port proxyPort
 		proxySocket = new ServerSocket(proxyPort);
 		Socket clientsocket = proxySocket.accept();
@@ -69,7 +69,7 @@ public class ProxyServer {
 		
 		proxySocket.close();
 		
-		//}
+		}
 
 		}
 		catch(Exception e){

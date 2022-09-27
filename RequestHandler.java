@@ -5,6 +5,8 @@ import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 
+import javax.xml.namespace.QName;
+
 // RequestHandler is thread that process requests of one client connection
 public class RequestHandler extends Thread {
 
@@ -13,6 +15,8 @@ public class RequestHandler extends Thread {
 	InputStream inFromClient;
 
 	OutputStream outToClient;
+
+	
 
 	byte[] request = new byte[1024];
 
@@ -28,11 +32,9 @@ public class RequestHandler extends Thread {
 			clientSocket.setSoTimeout(20000);
 			inFromClient = clientSocket.getInputStream();
 			outToClient = clientSocket.getOutputStream();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override
@@ -48,34 +50,29 @@ public class RequestHandler extends Thread {
 		 *
 		 */
 		try {
-
 			inFromClient.read(request);
-
 			
 			String requestLine = new String(request);
 			String[] splitLine = requestLine.split(" ");
 			String requestType = splitLine[0];
 			String urlString = splitLine[1];
 			
+			//URL url = new URL(urlString);
+
+			//Socket toWebServerSocket = new Socket(url.getHost(), url.getDefaultPort());
+			//InputStream inFromServer = toWebServerSocket.getInputStream();
 
 			// checks if requestType is a GET then checks to see if its in chache if it is
 			// it sents the file back to the user else it processes the request.
 			
 			if (requestType.equals("GET")) {
-
-
 				if (server.getCache(urlString) == null) {	
 					proxyServertoClient(request);
-					
 				} else {
 					sendCachedInfoToClient(server.getCache(urlString));
-					
-
 				}
 				server.writeLog(" Ip address: " +  " url: " +urlString);
-
 			}
-
 			else {
 				clientSocket.close();
 			}
@@ -83,7 +80,6 @@ public class RequestHandler extends Thread {
 			e.getStackTrace();
 		}
 	}
-
 
 	private void proxyServertoClient(byte[] clientRequest) {
 
@@ -98,7 +94,6 @@ public class RequestHandler extends Thread {
 		// to handle binary content, byte is used
 		byte[] serverReply = new byte[4096];
 		
-			
 		/**
 		 * To do
 		 * (1) Create a socket to connect to the web server (default port 80)
@@ -107,10 +102,7 @@ public class RequestHandler extends Thread {
 		 * (4) Write the web server's response to a cache file, put the request URL and cache file name to the cache Map
 		 * (5) close file, and sockets.
 		*/
-
-
 		try {
-
 			String requestLine = new String(request);
 			String[] splitLine = requestLine.split(" ");
 			String urlString = splitLine[1];
@@ -118,23 +110,18 @@ public class RequestHandler extends Thread {
 			URL url = new URL(urlString);
 
 			toWebServerSocket = new Socket(url.getHost(), url.getDefaultPort());
-
+			//toWebServerSocket.getInetAddress();
 
 			inFromServer = toWebServerSocket.getInputStream();
 			outToServer = toWebServerSocket.getOutputStream();
 
 			outToServer.write(clientRequest);
 			
-
 			fileWriter = new FileOutputStream(fileName);
-
 
 			outToServer.write(clientRequest);
 			
-
 			outToServer.flush();
-			
-
 
 			while(inFromServer.read(serverReply) != -1){
 				
@@ -190,8 +177,4 @@ public class RequestHandler extends Thread {
 		}
 		return sb.toString();
 	}
-
-
-	
-
 }

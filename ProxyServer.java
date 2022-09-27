@@ -65,20 +65,13 @@ public class ProxyServer {
 		RequestHandler rh = new RequestHandler(clientsocket, this);
 		rh.start();
 
-		
-		
 		proxySocket.close();
-		
 		}
-
 		}
 		catch(Exception e){
 			e.printStackTrace();
-		}
-		
+		}		
 	}
-
-
 
 	public String getCache(String hashcode) {
 		return cache.get(hashcode);

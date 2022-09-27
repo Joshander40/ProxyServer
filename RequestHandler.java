@@ -63,7 +63,7 @@ public class RequestHandler extends Thread {
 			
 			if (requestType.equals("GET")) {
 
-
+				
 				if (server.getCache(urlString) == null) {	
 					proxyServertoClient(request);
 					

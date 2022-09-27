@@ -1,46 +1,45 @@
-Date: 2022.09.26.15.46.58 Url: http://fortnite.com/2fa
-Date: 2022.09.26.15.48.55 Url: http://www.cs.ndsu.nodak.edu/global/simple.css
-Date: 2022.09.26.15.48.55 Url: http://www.cs.ndsu.nodak.edu/aboutus.htm
-Date: 2022.09.26.15.51.51 Url: http://detectportal.firefox.com/canonical.html
-Date: 2022.09.26.15.51.51 Url: http://detectportal.firefox.com/success.txt?ipv4
-Date: 2022.09.26.15.51.51 Url: http://detectportal.firefox.com/success.txt?ipv6
-Date: 2022.09.26.15.52.04 Url: http://www.cs.ndsu.nodak.edu/
-Date: 2022.09.26.15.53.15 Url: http://fortnite.com/2fa
-Date: 2022.09.26.15.53.41 Url: http://www.cs.ndsu.nodak.edu/
-Date: 2022.09.26.16.09.11Ip adress: 0.0.0.0 url: http://detectportal.firefox.com/success.txt?ipv6
-Date: 2022.09.26.16.09.16Ip adress: 0.0.0.0 url: http://detectportal.firefox.com/canonical.html
-Date: 2022.09.26.17.56.13 Ip address:  url: http://detectportal.firefox.com/canonical.html
-Date: 2022.09.26.17.56.13 Ip address:  url: http://detectportal.firefox.com/success.txt?ipv4
-Date: 2022.09.26.17.56.13 Ip address:  url: http://detectportal.firefox.com/success.txt?ipv6
-Date: 2022.09.26.17.56.17 Ip address:  url: http://cs.ndsu.edu/stars/
-Date: 2022.09.26.17.56.19 Ip address:  url: http://cs.ndsu.edu/stars/
-Date: 2022.09.26.17.57.06 Ip address:  url: http://detectportal.firefox.com/canonical.html
-Date: 2022.09.26.17.57.06 Ip address:  url: http://detectportal.firefox.com/success.txt?ipv4
-Date: 2022.09.26.17.57.06 Ip address:  url: http://detectportal.firefox.com/success.txt?ipv6
-Date: 2022.09.26.17.57.16 Ip address:  url: http://cs.ndsu.edu/positions.htm
-Date: 2022.09.26.17.57.16 Ip address:  url: http://cs.ndsu.edu/global/drop_down.js
-Date: 2022.09.26.17.57.17 Ip address:  url: http://cs.ndsu.edu/global/simple.css
-Date: 2022.09.26.17.57.41 Ip address:  url: http://cs.ndsu.edu/images/cs.png
-Date: 2022.09.26.17.57.41 Ip address:  url: http://cs.ndsu.edu/images/logo_ndsu.gif
-Date: 2022.09.26.17.57.45 Ip address:  url: http://cs.ndsu.edu/positions.htm
-Date: 2022.09.26.17.57.45 Ip address:  url: http://cs.ndsu.edu/images/logo_ndsu.gif
-Date: 2022.09.26.17.57.45 Ip address:  url: http://cs.ndsu.edu/global/default.css
-Date: 2022.09.26.17.57.45 Ip address:  url: http://cs.ndsu.edu/images/cs.png
-Date: 2022.09.26.17.58.12 Ip address:  url: http://www.cs.ndsu.nodak.edu/~nygard/
-Date: 2022.09.26.17.58.12 Ip address:  url: http://costofwar.com/costofwar.js
-Date: 2022.09.26.17.58.13 Ip address:  url: http://www.cs.ndsu.nodak.edu/favicon.ico
-Date: 2022.09.26.17.59.22 Ip address:  url: http://www.cs.ndsu.nodak.edu/~nygard/
-Date: 2022.09.26.17.59.22 Ip address:  url: http://www.cs.ndsu.nodak.edu/~nygard/beige031.jpg
-Date: 2022.09.26.17.59.22 Ip address:  url: http://www.cs.ndsu.nodak.edu/~nygard/gif/nygard5.jpg
-Date: 2022.09.26.17.59.25 Ip address:  url: http://www.cs.ndsu.nodak.edu/~nygard/
-Date: 2022.09.26.17.59.25 Ip address:  url: http://www.cs.ndsu.nodak.edu/~nygard/beige031.jpg
-Date: 2022.09.26.17.59.28 Ip address:  url: http://www.cs.ndsu.nodak.edu/~nygard/
-Date: 2022.09.26.17.59.28 Ip address:  url: http://www.cs.ndsu.nodak.edu/~nygard/beige031.jpg
-Date: 2022.09.26.17.59.41 Ip address:  url: http://www.cs.ndsu.nodak.edu/~nygard/
-Date: 2022.09.26.17.59.41 Ip address:  url: http://www.cs.ndsu.nodak.edu/~nygard/beige031.jpg
-Date: 2022.09.26.18.00.18 Ip address:  url: http://cs.ndsu.edu/positions.htm
-Date: 2022.09.26.18.00.20 Ip address:  url: http://cs.ndsu.edu/undergrads.htm
-Date: 2022.09.26.18.00.20 Ip address:  url: http://cs.ndsu.edu/images/students.jpg
-Date: 2022.09.26.18.00.20 Ip address:  url: http://cs.ndsu.edu/images/lab.jpg
-Date: 2022.09.26.18.00.25 Ip address:  url: http://cs.ndsu.edu/grads.htm
-Date: 2022.09.26.18.00.39 Ip address:  url: http://cs.ndsu.edu/images/studentboard.jpg
+Date: 2022.09.27.14.35.51 Ip address: 188.184.21.108 url: http://info.cern.ch/
+Date: 2022.09.27.14.38.44 Ip address: 128.95.155.197 url: http://www.washington.edu/
+Date: 2022.09.27.14.38.44 Ip address: 128.95.155.197 url: http://www.washington.edu/static/home/wp-content/themes/boundless/style.css?5d6af5a
+Date: 2022.09.27.14.38.44 Ip address: 128.95.155.197 url: http://www.washington.edu/static/home/wp-includes/js/underscore.min.js?5d6af5a
+Date: 2022.09.27.14.38.44 Ip address: 128.95.155.197 url: http://www.washington.edu/static/home/wp-includes/css/dist/block-library/style.css?5d6af5a
+Date: 2022.09.27.14.38.44 Ip address: 128.95.155.197 url: http://www.washington.edu/static/home/wp-includes/js/jquery/jquery-migrate.js?5d6af5a
+Date: 2022.09.27.14.38.44 Ip address: 128.95.155.197 url: http://www.washington.edu/static/home/wp-content/themes/boundless/js/homepage.js?5d6af5a
+Date: 2022.09.27.14.38.44 Ip address: 128.95.155.197 url: http://www.washington.edu/static/home/wp-content/themes/uw-2014/style.css?ver=3.0.0
+Date: 2022.09.27.14.38.44 Ip address: 128.95.155.197 url: http://www.washington.edu/static/home/wp-content/themes/uw-2014/js/site.js?ver=3.0.0
+Date: 2022.09.27.14.38.44 Ip address: 128.95.155.197 url: http://www.washington.edu/static/home/wp-includes/js/jquery/jquery.js?5d6af5a
+Date: 2022.09.27.14.39.02 Ip address: 128.95.155.197 url: http://www.washington.edu/
+Date: 2022.09.27.14.39.02 Ip address: 128.95.155.197 url: http://www.washington.edu/static/home/wp-includes/js/backbone.min.js?5d6af5a
+Date: 2022.09.27.14.39.02 Ip address: 128.95.155.197 url: http://www.washington.edu/static/home/wp-content/themes/uw-2014/style.css?ver=3.0.0
+Date: 2022.09.27.14.39.02 Ip address: 128.95.155.197 url: http://www.washington.edu/static/home/wp-content/themes/uw-2014/js/site.js?ver=3.0.0
+Date: 2022.09.27.14.39.02 Ip address: 128.95.155.197 url: http://www.washington.edu/static/home/wp-includes/js/jquery/jquery.js?5d6af5a
+Date: 2022.09.27.14.40.35 Ip address: 34.107.221.82 url: http://detectportal.firefox.com/canonical.html
+Date: 2022.09.27.14.40.35 Ip address: 34.107.221.82 url: http://detectportal.firefox.com/success.txt?ipv6
+Date: 2022.09.27.14.40.35 Ip address: 34.107.221.82 url: http://detectportal.firefox.com/success.txt?ipv4
+Date: 2022.09.27.14.40.57 Ip address: 47.246.137.166 url: http://alibaba.com/
+Date: 2022.09.27.14.41.14 Ip address: 173.255.152.135 url: http://www.ca.org/
+Date: 2022.09.27.14.41.18 Ip address: 34.107.221.82 url: http://detectportal.firefox.com/canonical.html
+Date: 2022.09.27.14.41.18 Ip address: 34.107.221.82 url: http://detectportal.firefox.com/success.txt?ipv4
+Date: 2022.09.27.14.41.18 Ip address: 34.107.221.82 url: http://detectportal.firefox.com/success.txt?ipv6
+Date: 2022.09.27.14.42.07 Ip address: 128.95.155.198 url: http://www.washington.edu/
+Date: 2022.09.27.14.42.07 Ip address: 128.95.155.198 url: http://www.washington.edu/static/home/wp-content/themes/uw-2014/style.css?ver=3.0.0
+Date: 2022.09.27.14.42.07 Ip address: 128.95.155.198 url: http://www.washington.edu/static/home/wp-content/themes/uw-2014/js/site.js?ver=3.0.0
+Date: 2022.09.27.14.42.08 Ip address: 128.95.155.198 url: http://www.washington.edu/static/home/wp-includes/js/jquery/jquery.js?5d6af5a
+Date: 2022.09.27.14.43.41 Ip address: 34.107.221.82 url: http://detectportal.firefox.com/canonical.html
+Date: 2022.09.27.14.43.42 Ip address: 34.107.221.82 url: http://detectportal.firefox.com/success.txt?ipv6
+Date: 2022.09.27.14.43.42 Ip address: 34.107.221.82 url: http://detectportal.firefox.com/success.txt?ipv4
+Date: 2022.09.27.14.43.42 Ip address: 128.95.155.134 url: http://www.washington.edu/
+Date: 2022.09.27.14.43.42 Ip address: 128.95.155.134 url: http://www.washington.edu/static/home/wp-content/themes/boundless/style.css?5d6af5a
+Date: 2022.09.27.14.43.42 Ip address: 128.95.155.134 url: http://www.washington.edu/static/home/wp-includes/css/dist/block-library/style.css?5d6af5a
+Date: 2022.09.27.14.43.42 Ip address: 128.95.155.134 url: http://www.washington.edu/static/home/wp-content/themes/uw-2014/style.css?ver=3.0.0
+Date: 2022.09.27.14.43.42 Ip address: 128.95.155.134 url: http://www.washington.edu/static/home/wp-includes/js/underscore.min.js?5d6af5a
+Date: 2022.09.27.14.43.42 Ip address: 128.95.155.134 url: http://www.washington.edu/static/home/wp-content/themes/boundless/js/homepage.js?5d6af5a
+Date: 2022.09.27.14.43.43 Ip address: 128.95.155.134 url: http://www.washington.edu/static/home/wp-content/themes/uw-2014/js/site.js?ver=3.0.0
+Date: 2022.09.27.14.43.43 Ip address: 128.95.155.134 url: http://www.washington.edu/static/home/wp-includes/js/jquery/jquery.js?5d6af5a
+Date: 2022.09.27.14.44.41 Ip address: 34.107.221.82 url: http://detectportal.firefox.com/canonical.html
+Date: 2022.09.27.14.44.41 Ip address: 34.107.221.82 url: http://detectportal.firefox.com/success.txt?ipv4
+Date: 2022.09.27.14.47.17 Ip address: 188.184.21.108 url: http://info.cern.ch/
+Date: 2022.09.27.14.47.24 Ip address: 188.184.21.108 url: http://info.cern.ch/
+Date: 2022.09.27.14.47.51 Ip address: 134.129.125.68 url: http://cs.ndsu.edu/
+Date: 2022.09.27.14.48.34 Ip address: 134.129.125.68 url: http://cs.ndsu.edu/
+Date: 2022.09.27.14.49.01 Ip address: 134.129.125.68 url: http://www.cs.ndsu.nodak.edu/aboutus.htm

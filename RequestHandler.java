@@ -56,7 +56,10 @@ public class RequestHandler extends Thread {
 			String[] splitLine = requestLine.split(" ");
 			String requestType = splitLine[0];
 			String urlString = splitLine[1];
-			
+			InetAddress hostAddress = InetAddress.getByName(new URL(urlString).getHost());
+
+			String[] getIp = hostAddress.toString().split("/");
+			String ip = getIp[1];
 
 			// checks if requestType is a GET then checks to see if its in chache if it is
 			// it sents the file back to the user else it processes the request.
@@ -72,7 +75,7 @@ public class RequestHandler extends Thread {
 					
 
 				}
-				server.writeLog(" Ip address: " +  " url: " +urlString);
+				server.writeLog(" Ip address: " + ip +  " url: " +urlString);
 
 			}
 

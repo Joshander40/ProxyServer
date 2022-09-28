@@ -32,13 +32,12 @@ public class RequestHandler extends Thread {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override
 	public void run() {
 		/**
-
+		 * 
 		 * To do
 		 * Process the requests from a client. In particular,
 		 * (1) Check the request type, only process GET request and ignore others
@@ -74,8 +73,6 @@ public class RequestHandler extends Thread {
 				else 
 				{
 					sendCachedInfoToClient(server.getCache(urlString));
-					
-
 				}
 				//logs ip and url for a website even if its in the cache already
 				server.writeLog(" Ip address: " + ip +  " url: " +urlString);
@@ -96,19 +93,22 @@ public class RequestHandler extends Thread {
 		Socket toWebServerSocket = null;
 		InputStream inFromServer;
 		OutputStream outToServer;
-		
+
 		// Create Buffered output stream to write to cached copy of file
 		String fileName = "cached/" + generateRandomFileName() + ".dat";
-		
+
 		// to handle binary content, byte is used
 		byte[] serverReply = new byte[4096];
 					
 		/**
 		 * To do
 		 * (1) Create a socket to connect to the web server (default port 80)
-		 * (2) Send client's request (clientRequest) to the web server, you may want to use flush() after writing.
-		 * (3) Use a while loop to read all responses from web server and send back to client
-		 * (4) Write the web server's response to a cache file, put the request URL and cache file name to the cache Map
+		 * (2) Send client's request (clientRequest) to the web server, you may want to
+		 * use flush() after writing.
+		 * (3) Use a while loop to read all responses from web server and send back to
+		 * client
+		 * (4) Write the web server's response to a cache file, put the request URL and
+		 * cache file name to the cache Map
 		 * (5) close file, and sockets.
 		*/
 		try {
@@ -143,32 +143,26 @@ public class RequestHandler extends Thread {
 		{
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	// Sends the cached content stored in the cache file to the client
 	private void sendCachedInfoToClient(String fileName) {
 
 		try {
-
 			byte[] bytes = Files.readAllBytes(Paths.get(fileName));
-
 			outToClient.write(bytes);
 			outToClient.flush();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		try {
-
 			if (clientSocket != null) {
 				clientSocket.close();
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		}
 	}
 
@@ -184,8 +178,4 @@ public class RequestHandler extends Thread {
 		}
 		return sb.toString();
 	}
-
-
-	
-
 }

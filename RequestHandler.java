@@ -69,13 +69,15 @@ public class RequestHandler extends Thread {
 				if (server.getCache(urlString) == null) 
 				{	
 					proxyServertoClient(request);
+					server.writeLog(" Ip address: " + ip +  " url: " +urlString);
 				} 
 				else 
 				{
 					sendCachedInfoToClient(server.getCache(urlString));
+					server.writeLog(" Ip address: " + ip +  " url: " +urlString);
 				}
 				//logs ip and url for a website even if its in the cache already
-				server.writeLog(" Ip address: " + ip +  " url: " +urlString);
+				
 
 			}
 			else

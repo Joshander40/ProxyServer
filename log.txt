@@ -59,3 +59,10 @@ Date: 2022.09.27.14.23.09 Ip address:  url: http://info.cern.ch/
 Date: 2022.09.27.14.23.29 Ip address:  url: http://detectportal.firefox.com/canonical.html
 Date: 2022.09.27.14.23.29 Ip address:  url: http://detectportal.firefox.com/success.txt?ipv6
 Date: 2022.09.27.14.23.29 Ip address:  url: http://detectportal.firefox.com/success.txt?ipv4
+Date: 2022.09.27.15.05.14 Ip address:  url: http://detectportal.firefox.com/canonical.html
+Date: 2022.09.27.15.05.14 Ip address:  url: http://detectportal.firefox.com/success.txt?ipv6
+Date: 2022.09.27.15.05.14 Ip address:  url: http://detectportal.firefox.com/success.txt?ipv4
+Date: 2022.09.27.15.05.17 Ip address:  url: http://info.cern.ch/
+Date: 2022.09.27.15.05.47 Ip address:  url: http://detectportal.firefox.com/canonical.html
+Date: 2022.09.27.15.05.47 Ip address:  url: http://detectportal.firefox.com/success.txt?ipv6
+Date: 2022.09.27.15.05.47 Ip address:  url: http://detectportal.firefox.com/success.txt?ipv4
